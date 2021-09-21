@@ -63,7 +63,9 @@ In order to create such a method, pipelines made up of any number of function bl
 <div align="center">Fig. 3 - INFO_WRAPPER properties </div>
 <br>
     
-You can decide what the inputs are for the method by filling out the FB's INPUT property. It expects a list of values in the format "[FUNCTION_BLOCK_NAME.FUNCTION_BLOCK_TYPE]", seperated by commas. Specifying the outputs to be displayed upon the method's conclusion works similarly, but you should naturally fill out the OUTPUT property instead. Finally, the METHOD_NAME property specifies the name of the method. Should these properties be left blank, DINASORE will gather all possible inputs, all outputs and call the method "INFO_WRAPPER".
+You can decide what the inputs are for the method by filling out the FB's INPUT property. It expects a list of values in the format "[FUNCTION_BLOCK_NAME.FUNCTION_BLOCK_TYPE]", seperated by commas. Specifying the outputs to be displayed upon the method's conclusion works similarly, but you should naturally fill out the OUTPUT property instead. Finally, the METHOD_NAME property specifies the name of the method. Should these properties be left blank, DINASORE will gather all possible inputs, all outputs and name the method "INFO_WRAPPER".
+
+**Note:** When you deploy a pipeline that is wrapped by INFO_WRAPPER to DINASORE from 4DIAC, DINASORE checks to see which inputs already have a value assigned to them. Consequently, if you specify the value of an input in 4DIAC, you will not have to specify its value again when calling the method.   
 
 #### METHOD_CALLER
 
