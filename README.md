@@ -44,15 +44,42 @@ This folder contains function blocks that make use of the OPC-UA protocol for in
 
 #### INFO_WRAPPER
 
+<br>
+<div align="center"><img src="https://user-images.githubusercontent.com/47611246/134160017-59b17d7d-5d91-4708-aeb9-8570a8b76b30.png" /></div>
+<div align="center">Fig. 1 - INFO_WRAPPER function block </div>
+<br>
+
 The INFO_WRAPPER function block is a special FB that does not require a python file to be run by DINASORE. Its OpcUa property reads "METHOD" and as such this unique FB serves the purpose of creating OPC-UA methods.
+
+<br>
+<div align="center"><img src="https://user-images.githubusercontent.com/47611246/134160555-3ac2782c-c69b-4b84-91b8-c6b2bea911f4.png" /></div>
+<div align="center">Fig. 2 - INFO_WRAPPER wrapping connections </div>
+<br>
 
 In order to create such a method, pipelines made up of any number of function blocks should be wrapped by this wrapper by connecting its INIT_O property to the event to be fired by the method. Any other event can be connected to its INIT property.
 
-You can decide what the inputs are for the method by filling out the FB's INPUT property. It expects a list of values in the format "[FUNCTION_BLOCK_NAME.FUNCTION_BLOCK_TYPE]", seperated by commas. Specifying the outputs to be displayed upon the method's conclusion works similarly, but you should naturally fill out the OUTPUT property instead. Finally, the METHOD_NAME property specifies the name of the method. Should these properties be left blank, DINASORE will gather all possible inputs, all outputs and call the method "INFO_WRAPPER".
+<br>
+<div align="center"><img src="https://user-images.githubusercontent.com/47611246/134161052-eb936303-a42e-4f9c-98da-9e9eb11d1eb8.png" /></div>
+<div align="center">Fig. 3 - INFO_WRAPPER properties </div>
+<br>
+    
+You can decide what the inputs are for the method by filling out the FB's INPUT property. It expects a list of values in the format "[FUNCTION_BLOCK_NAME.FUNCTION_BLOCK_TYPE]", seperated by commas. Specifying the outputs to be displayed upon the method's conclusion works similarly, but you should naturally fill out the OUTPUT property instead. Finally, the METHOD_NAME property specifies the name of the method. Should these properties be left blank, DINASORE will gather all possible inputs, all outputs and name the method "INFO_WRAPPER".
+
+**Note:** When you deploy a pipeline that is wrapped by INFO_WRAPPER to DINASORE from 4DIAC, DINASORE checks to see which inputs already have a value assigned to them. Consequently, if you specify the value of an input in 4DIAC, you will not have to specify its value again when calling the method.   
 
 #### METHOD_CALLER
 
+<br>
+<div align="center"><img src="https://user-images.githubusercontent.com/47611246/134162073-a55f7d1e-838b-4e69-8fb5-9a983f149e99.png" /></div>
+<div align="center">Fig. 3 - INFO_WRAPPER properties </div>
+<br>
+
 The METHOD_CALLER function block calls the OPC-UA that is specified in its properties. INPUT_VARS expects a list in the format "[X]" where X is the value for an argument of the method. Each value should be seperated by a comma and the values should be in the same order as their respective method arguments. The INPUT_EVENT property is the value that will be assigned to the event being fired by the method. The METHOD_NAME property naturally represents the name of the OPC-UA method and the SERVER_URL is the address for the OPC-UA server that contains the method to be called.
+
+<br>
+<div align="center"><img src="https://user-images.githubusercontent.com/47611246/134162178-88e95d1a-f02e-4c58-b26c-04564f8f8d8a.png" /></div>
+<div align="center">Fig. 3 - INFO_WRAPPER properties </div>
+<br>
 
 The OUTPUT will be a list in the same format as INPUT_VARS. Its values are the ones from the pipeline that the method has finished calling.
 
