@@ -122,6 +122,24 @@ In this package you will find a configuration file called "config.json". This fi
                 # currently there is only the "wipe" strategy which cleans the DINASOREs' function blocks directory
                 # before synchronizing it 
 }
+
+# EXAMPLE
+{
+    "master-fbs-path": ".../4diac-ide/typelibrary/fbs/dinasore_function_blocks/FBs",
+    "dinasores": [
+        {
+            "address": "localhost",
+            "dinasore-path": ".../dinasore"
+        },
+        {
+            "address": "192.168.1.14",
+            "username": "pi",
+            "password": "raspberry"
+            "dinasore-path": ".../dinasore"
+        }
+    ],
+    "strategy": "wipe" # OPTIONAL
+}
 ```
 
 ### Synchronizing
