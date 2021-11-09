@@ -30,8 +30,8 @@ class POSTGRE_DB_FETCH_JSON_TIMESERIES:
                 self.conn = psycopg2.connect(dbname=dbname, 
                     user=user, 
                     password=password,
-                    host="localhost",
-                    port="5432")
+                    host=host,
+                    port=port)
                 self.cursor = self.conn.cursor()
 
             except OperationalError as err:
