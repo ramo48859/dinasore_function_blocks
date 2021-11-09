@@ -45,7 +45,7 @@ class POSTGRE_DB_FETCH_JSON_TIMESERIES:
 
         elif event_name == 'RUN':
             if self.conn != None:  
-                query = """SELECT * FROM {0} WHERE {0}.timestamp equals '{1}');""".format(table_name,timestamp)
+                query = """SELECT * FROM {0} WHERE {0}.timestamp = {1};""".format(table_name,timestamp)
                 print(query)
                 
                 # catch exception for invalid SQL statement#
