@@ -28,33 +28,35 @@ class MEASUREMENTS_TO_JSON_TIMESERIES:
 
     def __init__(self):
         self.sensor_id = None
-        self.frequency_step_units = None
         
-    def schedule(self, event_name, event_value,
-                 SENSOR_ID, MEASUREMENTS, INITIAL_TIMESTAMP, FREQUENCY_STEP_UNITS):
-
+    def schedule(self, event_name, event_value, SENSOR_ID, MEASUREMENTS, TIMESTAMPS):
+    
         if event_name == 'INIT':
             self.sensor_id = int(SENSOR_ID)
-            self.frequency_step_units = FREQUENCY_STEP_UNITS
 
-            return [event_value, 
-                self.sensor_id,
-                None,
-                None,
-                self.frequency_step_units,
-                None]
+            #print("Meas2Times Init")
+            
+            return [event_value, None, None]
 
 
         elif event_name == 'RUN':
-            string_list = np.array(MEASUREMENTS.split(";"))
-            floats_list = string_list.astype(float)
-            sensor_measurements = [(self.sensor_id,MEASUREMENTS[x]) for x in range(len(floats_list))]
-            timeseries = pd.DataFrame(sensor_measurements, columns=["measurement","sensor"], index=pd.date_range(INITIAL_TIMESTAMP, periods=len(floats_list), freq="L"))
+            
+            #print("Meas2Times Run")
+            
+            meas_str_list = np.array(MEASUREMENTS.split(";"))
+            meas_flt_list = meas_str_list.astype(float)
+            measurements  = [(self.sensor_id,meas_flt_list[x]) for x in range(len(meas_flt_list))]
+            
+            times_str_list = np.array(TIMESTAMPS.split(";"))
+            times_tst_list = times_str_list.astype(pd.Timestamp)            
+            
+            #delta_seconds = 0.001 * int(self.frequency_step_units)
+            #timeseries = pd.DataFrame(sensor_measurements, columns=["sensor","measurement"], index=pd.date_range(start=INITIAL_TIMESTAMP, periods=len(floats_list), freq=pd.tseries.offsets.DateOffset(seconds=delta_seconds)))
+            #result = timeseries.to_json(orient="split", date_format="iso", date_unit="us")
+            
+            timeseries = pd.DataFrame(measurements, columns=["sensor","measurement"], index=times_tst_list)
             result = timeseries.to_json(orient="split", date_format="iso", date_unit="us")
+            
             print(result)
-            return [event_value, 
-                self.sensor_id ,
-                MEASUREMENTS,
-                INITIAL_TIMESTAMP,
-                self.frequency_step_units,
-                result]
+            
+            return [None, event_value, result]
