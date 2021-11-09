@@ -41,7 +41,7 @@ class POSTGRE_DB_FETCH_JSON_TIMESERIES:
                 self.conn = None
 
             finally:
-                return [event_value, None]
+                return [event_value, None, None]
 
         elif event_name == 'RUN':
             if self.conn != None:  
@@ -63,7 +63,7 @@ class POSTGRE_DB_FETCH_JSON_TIMESERIES:
                 finally:
                     # self.cursor.close()
                     # self.conn.close()
-                    return [None, event_value]
+                    return [None, event_value, "lol"]
             else:
                 print("No active connection to PostgreSQL DB.")
-                return [event_value, None]
+                return [None, event_value, None]
