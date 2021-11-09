@@ -20,7 +20,7 @@ class POSTGRE_DB_FETCH_JSON_TIMESERIES:
         
     def schedule(self, event_name, event_value,
                  host, port, user, password, dbname,
-                 table_name, values):
+                 table_name, actuator_id, timestamp):
 
         if event_name == 'INIT':    
             
@@ -44,16 +44,15 @@ class POSTGRE_DB_FETCH_JSON_TIMESERIES:
                 return [event_value, None]
 
         elif event_name == 'RUN':
-            if self.conn != None:
-                # values must be a string with the exact number of values the table has
-                # values must be separated by "," and appropriately formated, do not forget to escape \" strings         
-                query = """SELECT * FROM {0} WHERE {0}.timestamp {1});""".format(table_name,values)
+            if self.conn != None:  
+                query = """SELECT * FROM {0} WHERE {0}.timestamp equals '{1}');""".format(table_name,timestamp)
                 print(query)
                 
                 # catch exception for invalid SQL statement#
                 try:
                     self.cursor.execute(query)
-                    self.conn.commit()
+                    rows = self.cursor.fetchall()
+                    print(rows)
 
                 except Exception as err:
                     print(err)
