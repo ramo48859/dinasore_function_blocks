@@ -4,7 +4,15 @@
     <InterfaceList>
         <EventInputs>
             <Event Name="INIT" Type="Event"/>
+                <With Var="HOST"/>
+                <With Var="PORT"/>
+                <With Var="USER"/>
+                <With Var="PASSWORD"/>
+                <With Var="DBNAME"/>
+                <With Var="TABLE_NAME"/>
+            </Event>
             <Event Name="RUN" Type="Event">
+                <With Var="TIMESERIES_INDEX"/>
                 <With Var="JSON_TIMESERIES"/>
             </Event>
         </EventInputs>
@@ -20,7 +28,7 @@
             <VarDeclaration Name="DBNAME" Type="STRING" OpcUa="Constant"/>
             <VarDeclaration Name="TABLE_NAME" Type="STRING" OpcUa="Constant"/>
             <VarDeclaration Name="TIMESERIES_INDEX" Type="STRING" OpcUa="Constant"/>
-            <VarDeclaration Name="JSON_TIMESERIES" Type="UINT" OpcUa="Variable"/>
+            <VarDeclaration Name="JSON_TIMESERIES" Type="UINT" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars/>
     </InterfaceList>
