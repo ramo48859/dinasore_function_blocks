@@ -12,11 +12,7 @@ timeseries_index|timestamp|measuremnt
 
 Input format from MEASUREMENTS_TO_JSON_TIMESERIES fblock:
 
-{
-    "columns": ["sensor","measurement"],
-    "index": ["2017-01-01T12:00:00.000000Z","2017-01-01T12:00:00.300000Z","2017-01-01T12:00:00.600000Z","2017-01-01T12:00:00.900000Z","2017-01-01T12:00:01.200000Z","2017-01-01T12:00:01.500000Z","2017-01-01T12:00:01.800000Z","2017-01-01T12:00:02.100000Z","2017-01-01T12:00:02.400000Z","2017-01-01T12:00:02.700000Z"],
-    "data":[[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0]]
-}
+"{"columns": ["sensor","measurement"],"index": ["2017-01-01T12:00:00.000000Z","2017-01-01T12:00:00.300000Z","2017-01-01T12:00:00.600000Z","2017-01-01T12:00:00.900000Z","2017-01-01T12:00:01.200000Z","2017-01-01T12:00:01.500000Z","2017-01-01T12:00:01.800000Z","2017-01-01T12:00:02.100000Z","2017-01-01T12:00:02.400000Z","2017-01-01T12:00:02.700000Z"],"data":[[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0],[3,0.0]]}"
 """
 
 import psycopg2
@@ -43,8 +39,8 @@ class POSTGRE_DB_INSERT_JSON_TIMESERIES:
                 self.conn = psycopg2.connect(dbname=dbname, 
                     user=user, 
                     password=password,
-                    host="localhost",
-                    port="5432")
+                    host=host,
+                    port=port)
                 self.cursor = self.conn.cursor()
 
             except OperationalError as err:
