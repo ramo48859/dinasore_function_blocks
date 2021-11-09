@@ -5,7 +5,6 @@
         <EventInputs>
             <Event Name="INIT" Type="Event"/>
             <Event Name="READ" Type="Event">
-                <With Var="T_CYCLE"/>
                 <With Var="PIN"/>
                 <With Var="SIZE"/>
             </Event>
@@ -13,16 +12,17 @@
         <EventOutputs>
             <Event Name="INIT_O" Type="Event"/>
             <Event Name="READ_O" Type="Event">
-                <With Var="VALUE"/>
+                <With Var="MEASUREMENTS"/>
+                <With Var="TIMESTAMPS"/>  
             </Event>
         </EventOutputs>
         <InputVars>
-            <VarDeclaration Name="T_CYCLE" Type="REAL" OpcUa="Variable"/>
             <VarDeclaration Name="PIN" Type="INT" OpcUa="Variable"/>
             <VarDeclaration Name="SIZE" Type="INT" OpcUa="Variable"/>
         </InputVars>
         <OutputVars>
-            <VarDeclaration Name="VALUE" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="MEASUREMENTS" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="TIMESTAMPS" Type="STRING" OpcUa="Variable"/>
         </OutputVars>
     </InterfaceList>
 
