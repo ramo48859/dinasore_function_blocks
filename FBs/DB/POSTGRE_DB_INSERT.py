@@ -31,7 +31,7 @@ Block variables:
 table_name = 'reference_values (sensor_id,actuator_id)'
 insert_values = '1,1,3'
 
-3 - Example to insert specifying the column names, no returning values:
+3 - Example to insert specifying the column names, with returning values:
 This example will auto increment reference_id column.
 
 Querry:
