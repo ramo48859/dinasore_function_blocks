@@ -84,28 +84,26 @@ class POSTGRE_DB_INSERT:
                 print(query)
                 
                 # catch exception for invalid SQL statement#
+                result = None
                 try:
                     self.cursor.execute(query)
                     self.conn.commit()
 
-                    # if there are values to return, proceed
+                    # if there are values to return
                     if return_values != None:
                         rows = self.cursor.fetchall()
                         if(len(rows)>0):
-                            result = json.dump(rows)
-                            print(result)
-                            return [None, event_value, result]
+                            result = json.dumps(rows)
 
                 except Exception as err:
                     print(err)
-
                     # rollback the previous transaction before starting another
                     self.conn.rollback()
 
                 finally:
                     # self.cursor.close()
                     # self.conn.close()
-                    return [None, event_value, None]
+                    return [None, event_value, result]
             else:
                 print("No active connection to PostgreSQL DB.")
                 return [event_value, None, None]

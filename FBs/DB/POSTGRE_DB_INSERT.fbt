@@ -11,7 +11,9 @@
         </EventInputs>
         <EventOutputs>
             <Event Name="INIT_O" Type="Event"/>
-            <Event Name="RUN_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+                <With Var="RESULT_VALUES"/>
+            </Event>
         </EventOutputs>
         <InputVars>
             <VarDeclaration Name="HOST" Type="STRING" OpcUa="Constant"/>
@@ -23,7 +25,9 @@
             <VarDeclaration Name="INSERT_VALUES" Type="STRING" OpcUa="Variable.RUN"/>
             <VarDeclaration Name="RETURN_VALUES" Type="STRING" OpcUa="Variable.RUN"/>
         </InputVars>
-        <OutputVars/>
+        <OutputVars>
+            <VarDeclaration Name="RESULT_VALUES" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
     </InterfaceList>
 </FBType>
 
