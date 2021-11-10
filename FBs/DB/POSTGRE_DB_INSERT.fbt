@@ -5,7 +5,8 @@
         <EventInputs>
             <Event Name="INIT" Type="Event"/>
             <Event Name="RUN" Type="Event">
-                <With Var="VALUES"/>
+                <With Var="INSERT_VALUES"/>
+                <With Var="RETURN_VALUES"/>
             </Event>
         </EventInputs>
         <EventOutputs>
@@ -19,7 +20,8 @@
             <VarDeclaration Name="PASSWORD" Type="STRING" OpcUa="Constant"/>
             <VarDeclaration Name="DBNAME" Type="STRING" OpcUa="Constant"/>
             <VarDeclaration Name="TABLE_NAME" Type="STRING" OpcUa="Constant"/>
-            <VarDeclaration Name="VALUES" Type="STRING" OpcUa="Constant"/>
+            <VarDeclaration Name="INSERT_VALUES" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="RETURN_VALUES" Type="STRING" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars/>
     </InterfaceList>

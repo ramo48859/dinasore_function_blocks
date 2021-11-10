@@ -19,7 +19,7 @@ Querry:
 INSERT INTO reference_values VALUES (1,1,3)
 Block variables:
 table_name = 'reference_values'
-values = '1,1,3'
+insert_values = '1,1,3'
 
 
 2 - Example to insert specifying the column names, no returning values:
@@ -29,7 +29,7 @@ Querry:
 INSERT INTO reference_values (sensor_id,actuator_id) VALUES (1,3)
 Block variables:
 table_name = 'reference_values (sensor_id,actuator_id)'
-values = '1,1,3'
+insert_values = '1,1,3'
 
 3 - Example to insert specifying the column names, no returning values:
 This example will auto increment reference_id column.
@@ -38,14 +38,13 @@ Querry:
 INSERT INTO reference_values (sensor_id,actuator_id) VALUES (1,3) RETURNING reference_values.id AS reference_id
 Block variables:
 table_name = 'reference_values (sensor_id,actuator_id)'
-values = '1,1,3'
+insert_values = '1,1,3'
 return_values = 'RETURNING reference_values.id AS reference_id'
 """
 
 import psycopg2
 from psycopg2 import OperationalError, errorcodes, errors
-
-
+import json
 
 class POSTGRE_DB_INSERT:
 
@@ -55,7 +54,7 @@ class POSTGRE_DB_INSERT:
         
     def schedule(self, event_name, event_value,
                  host, port, user, password, dbname,
-                 table_name, values, return_value):
+                 table_name, insert_values, return_values):
 
         if event_name == 'INIT':
             # catch exception for invalid SQL connection
@@ -75,19 +74,27 @@ class POSTGRE_DB_INSERT:
                 self.conn = None
 
             finally:
-                return [event_value, None]
+                return [event_value, None, None]
 
         elif event_name == 'RUN':
             if self.conn != None:
-                # values must be a string with the exact number of values the table has
-                # values must be separated by "," and appropriately formated, do not forget to escape \" strings         
-                query = """INSERT INTO {0} VALUES ({1});""".format(table_name,values)
+                # insert_values must be a string with the exact number of values the table has
+                # insert_values must be separated by "," and appropriately formated, do not forget to escape \" strings         
+                query = """INSERT INTO {0} VALUES ({1}) {2};""".format(table_name,insert_values,return_values)
                 print(query)
                 
                 # catch exception for invalid SQL statement#
                 try:
                     self.cursor.execute(query)
                     self.conn.commit()
+
+                    # if there are values to return, proceed
+                    if return_values != None:
+                        rows = self.cursor.fetchall()
+                        if(len(rows)>0):
+                            result = json.dump(rows)
+                            print(result)
+                            return [None, event_value, result]
 
                 except Exception as err:
                     print(err)
@@ -98,7 +105,7 @@ class POSTGRE_DB_INSERT:
                 finally:
                     # self.cursor.close()
                     # self.conn.close()
-                    return [None, event_value]
+                    return [None, event_value, None]
             else:
                 print("No active connection to PostgreSQL DB.")
-                return [event_value, None]
+                return [event_value, None, None]
