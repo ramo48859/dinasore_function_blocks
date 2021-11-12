@@ -3,7 +3,7 @@ import pandas as pd
 from ADCPi import ADCPi
 
 """
-This block is used with an ADCPI hat, on a Raspberry Pi, to collect data  in parallel, from two sensors.
+This block is used with an ADCPI hat, on a Raspberry Pi, to collect data in parallel, from two sensors.
 Each sensor will have its own list of measurements and the list of timestamps is shared.
 https://www.abelectronics.co.uk/p/69/adc-pi-raspberry-pi-analogue-to-digital-converter
 
