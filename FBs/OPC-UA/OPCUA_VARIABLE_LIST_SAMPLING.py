@@ -20,7 +20,7 @@ from opcua import Client
 # @return data: A list formatted string with the values from each variables, separated by comma (e.g. "[11.66, 1.71, 1.50, 1.60, 0.31]").
 # 
 # 
-# @organization: DIGI Lab, FEUP
+# @organization: DIGI2 Lab, FEUP
 # @author: Lu�s Neto
 # @contact: lcneto@fe.up.pt
 # @license: GPLv3
