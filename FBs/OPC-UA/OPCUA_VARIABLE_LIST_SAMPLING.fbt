@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Name="OPCUA_CLIENT" OpcUa="DEVICE.SENSOR">
+<FBType Name="OPCUA_VARIABLE_LIST_SAMPLING" OpcUa="DEVICE.SENSOR">
     <InterfaceList>
         <EventInputs>
             <Event Name="INIT" Type="Event"/>

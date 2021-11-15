@@ -2,7 +2,7 @@ import time
 from opcua import Client
 
 #===============================================================================
-# OPC UA Client Function block
+# OPCUA_VARIABLE_LIST_SAMPLING Function block
 # 
 # This function block connects to an OPCUA endpoint url, and, according with a specified rate,
 # samples the variables specified in a comma separated list.
@@ -21,14 +21,14 @@ from opcua import Client
 # 
 # 
 # @organization: DIGI Lab, FEUP
-# @author: Luís Neto
+# @author: Luï¿½s Neto
 # @contact: lcneto@fe.up.pt
 # @license: GPLv3
 # @date: 12-11-2020
 # @version: V1.0.1
 #===============================================================================
 
-class OPCUA_CLIENT:
+class OPCUA_VARIABLE_LIST_SAMPLING:
     
     def __init__(self):
         self.endpoint_url = ""
