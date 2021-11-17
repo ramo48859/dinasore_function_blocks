@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="RASPBERRY_PI_GPIO_OUT" OpcUa="DEVICE.SENSOR">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="PIN_NUMBER"/>
+            </Event>
+            <Event Name="READ" Type="Event">
+                <With Var="VALUE"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="READ_O" Type="Event"/>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="PIN_NUMBER" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="VALUE" Type="BOOL" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+        </OutputVars>
+    </InterfaceList>
+</FBType>
