@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Name="RASPBERRY_PI_CONTROL_ROBOT" OpcUa="DEVICE.SENSOR">
+<FBType Name="RASPBERRY_PI_CONTROL_ROBOT" OpcUa="POINT.STARTPOINT">
     <InterfaceList>
         <EventInputs>
             <Event Name="INIT" Type="Event">
@@ -9,9 +9,8 @@
                 <With Var="SORT_CILINDER_GPIO_PIN"/>
             </Event>
             <Event Name="READ" Type="Event">
-                <With Var="DISCARD_CILINDER"/>
-                <With Var="PICK_CILINDER"/>
-                <With Var="SORT_CILINDER"/>
+                <With Var="OPCUA_GRAB"/>
+                <With Var="BUTTON"/>
             </Event>
         </EventInputs>
         <EventOutputs>
@@ -22,9 +21,8 @@
             <VarDeclaration Name="DISCARD_CILINDER_GPIO_PIN" Type="INT" OpcUa="Constant.RUN"/>
             <VarDeclaration Name="PICK_CILINDER__GPIO_PIN" Type="INT" OpcUa="Constant.RUN"/>
             <VarDeclaration Name="SORT_CILINDER_GPIO_PIN" Type="INT" OpcUa="Constant.RUN"/>
-            <VarDeclaration Name="DISCARD_CILINDER" Type="BOOL" OpcUa="Variable.RUN"/>
-            <VarDeclaration Name="PICK_CILINDER" Type="BOOL" OpcUa="Variable.RUN"/>
-            <VarDeclaration Name="SORT_CILINDER" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="OPCUA_GRAB" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BUTTON" Type="BOOL" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars>
         </OutputVars>
