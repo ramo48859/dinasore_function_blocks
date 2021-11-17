@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="FILTER_JSON_TIMESERIES" OpcUa="POINT.ENDPOINT">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event"/>
+            <Event Name="RUN" Type="Event">
+                <With Var="TIMESERIES_1_IN"/>
+                <With Var="TIMESERIES_2_IN"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+                <With Var="TIMESERIES_1_OUT"/>
+                <With Var="TIMESERIES_2_OUT"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="TIMESERIES_1_IN" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="TIMESERIES_2_IN" Type="STRING" OpcUa="Variable"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="TIMESERIES_1_OUT" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="TIMESERIES_2_OUT" Type="STRING" OpcUa="Variable"/>
+        </OutputVars>
+    </InterfaceList>
+</FBType>
+
