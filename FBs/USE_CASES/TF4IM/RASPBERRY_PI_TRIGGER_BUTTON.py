@@ -1,7 +1,7 @@
 """
 This block takes a GPIO PIN Number (Board numbering scheme)
-and if the button is pressed before timeout, FIRST_CONDITION is triggered.
-SECOND condition is triggered if the button is not pressed befpre timeout.
+If the button is pressed before timeout, return True
+If timeout occurs, return False
 
 ATENTION INVERSE LOGIC (because of the Arduino firmware used at the time).
 """
@@ -21,7 +21,7 @@ class RASPBERRY_PI_TRIGGER_BUTTON:
         if event_name == 'INIT':
             self.pin_number = pin_number
             GPIO.setup(pin_number, GPIO.IN)
-            return [event_value, None, True, True]
+            return [event_value, None, False]
 
         elif event_name == 'READ':
             # Check button for 5 seconds
@@ -30,9 +30,9 @@ class RASPBERRY_PI_TRIGGER_BUTTON:
             while True:
                 value = GPIO.input(pin_number)
                 if bool(value) == True:
-                    return [None, event_value, False, True]
+                    return [None, event_value, True]
                 elif time.time() > timeout:
                     break
-            return [None, event_value, True, False]
+            return [None, event_value, False]
                     
                 

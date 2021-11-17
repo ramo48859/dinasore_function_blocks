@@ -11,16 +11,14 @@
         <EventOutputs>
             <Event Name="INIT_O" Type="Event"/>
             <Event Name="READ_O" Type="Event">
-                <With Var="FIRST_CONDITION"/>
-                <With Var="SECOND_CONDITION"/>
+                <With Var="VALUE"/>
             </Event>
         </EventOutputs>
         <InputVars>
             <VarDeclaration Name="PIN_NUMBER" Type="INT" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars>
-            <VarDeclaration Name="FIRST_CONDITION" Type="BOOL" OpcUa="Variable.RUN"/>
-            <VarDeclaration Name="SECOND_CONDITION" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="VALUE" Type="BOOL" OpcUa="Variable.RUN"/>
         </OutputVars>
     </InterfaceList>
 </FBType>
