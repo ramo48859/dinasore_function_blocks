@@ -18,13 +18,13 @@
             </Event>
         </EventOutputs>
         <InputVars>
-            <VarDeclaration Name="endpoint_url" Type="STRING" OpcUa="Constant"/>
-            <VarDeclaration Name="node_id" Type="STRING" OpcUa="Constant"/>
-            <VarDeclaration Name="value" Type="STRING" OpcUa="Constant"/>
+            <VarDeclaration Name="endpoint_url" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="node_id" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="value" Type="STRING" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars>
-            <VarDeclaration Name="status" Type="STRING" OpcUa="Variable"/>
-			<VarDeclaration Name="data" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="status" Type="STRING" OpcUa="Variable.RUN"/>
+			<VarDeclaration Name="data" Type="STRING" OpcUa="Variable.RUN"/>
         </OutputVars>
     </InterfaceList>
 </FBType>

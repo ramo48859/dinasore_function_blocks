@@ -82,7 +82,7 @@ class DOUBLE_SENSOR_ADCPI:
             return [event_value, None, None, None, None]
 
         ### READ EVENT ###
-        elif event_name == 'RUN_O':
+        elif event_name == 'RUN':
             #print("ADCPi read")
             self.read_from_adc()
             #print("ADCPi read done")
