@@ -22,5 +22,8 @@ class RASPBERRY_PI_GPIO_OUT:
 
         elif event_name == 'READ':
             time.sleep(0.20)
-            GPIO.output(pin_number, bool(value))
+            if bool(value) == True:
+                GPIO.output(pin_number, GPIO.HIGH)
+            else:
+                GPIO.output(pin_number, GPIO.LOW)
             return [None, event_value]
