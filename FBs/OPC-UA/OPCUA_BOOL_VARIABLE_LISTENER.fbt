@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Name="OPCUA_VARIABLE_LISTEN_STATE_CHANGE" OpcUa="POINT.STARTPOINT">
+<FBType Name="OPCUA_BOOL_VARIABLE_LISTENER" OpcUa="POINT.STARTPOINT">
     <InterfaceList>
         <EventInputs>
             <Event Name="INIT" Type="Event">
@@ -14,7 +14,7 @@
             <Event Name="INIT_O" Type="Event"/>
             <Event Name="READ_O" Type="Event">
                 <With Var="status"/>
-                <With Var="trigger"/>
+                <With Var="value"/>
             </Event>
         </EventOutputs>
         <InputVars>
@@ -23,7 +23,7 @@
         </InputVars>
         <OutputVars>
             <VarDeclaration Name="status" Type="STRING" OpcUa="Variable.RUN"/>
-			<VarDeclaration Name="trigger" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="value" Type="BOOL" OpcUa="Variable.RUN"/>
         </OutputVars>
     </InterfaceList>
 </FBType>

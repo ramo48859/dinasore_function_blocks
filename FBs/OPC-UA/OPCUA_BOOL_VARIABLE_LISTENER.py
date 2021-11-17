@@ -5,8 +5,7 @@ from opcua import ua
 #===================================================================================
 # OPCUA_VARIABLE_LISTEN_STATE_CHANGER Function block
 # 
-# This function block connects to an OPCUA endpoint url, and, whenever the given variable
-# changes, it fires a boolean output.
+# This function block connects to an OPCUA endpoint url, and returns its boolean output.
 # 
 # @type  endpoint_url: string
 # @param endpoint_url: The URL of the OPC UA server to connect.
@@ -25,13 +24,12 @@ from opcua import ua
 # @version: V1.0.1
 #===================================================================================
 
-class OPCUA_VARIABLE_LISTEN_STATE_CHANGE:
+class OPCUA_BOOL_VARIABLE_LISTENER:
     
     def __init__(self):
         self.endpoint_url = ""
         self.status = ""
         self.client = None
-        self.last_value = None
     
     def schedule(self, event_input_name, event_input_value, 
         endpoint_url, node_id):
@@ -40,18 +38,15 @@ class OPCUA_VARIABLE_LISTEN_STATE_CHANGE:
             if not endpoint_url:
                 self.status = "Error, endpoint URL not specified"
                 return [event_input_value, None, self.status, None]
-
             else:
                 self.endpoint_url = endpoint_url
                 self.client = Client(self.endpoint_url)
-                
                 try:
                     self.client.connect()
                 except Exception as e: 
                     print(e)
                     self.status = "Error connecting OPC UA endpoint"
                     return [event_input_value, None, self.status, None]
-
             return [event_input_value, None, self.status, None]
 
         elif event_input_name == 'READ':
@@ -61,23 +56,10 @@ class OPCUA_VARIABLE_LISTEN_STATE_CHANGE:
                 return [None, event_input_value, self.status, None]
             try:
                 variable = self.client.get_node(node_id)
-                curr_value = variable.get_value()
+                curr_value = bool(variable.get_value())
                 self.status = "Variable retrieved successfully."
-
-                if self.last_value != None:
-                    if self.last_value != curr_value:
-                        return [None, event_input_value, self.status, True]
-                    else:
-                        return [None, event_input_value, self.status, False]
-                else:
-
-                    self.last_value = curr_value
-                    return [None, event_input_value, self.status, False]
+                return [None, event_input_value, self.status, curr_value]
             except Exception as e: 
                 print(e)
                 self.status = "Error retrieving node '{}' from server.".format(node_id)
                 return [None, event_input_value, self.status, None]
-
-            self.status = "Writing data '{}'".format(value)
-
-            return [None, event_input_value, self.status, value]
