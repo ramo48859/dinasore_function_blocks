@@ -66,6 +66,8 @@ class RASPBERRY_PI_CONTROL_ROBOT:
                 self.prevTime = time.time()
             elif((self.state == 2) and (nextState == 4)):
                 self.prevTime = time.time()
+            else:
+                nextState = self.state
             
             #Update State
             self.state = nextState
