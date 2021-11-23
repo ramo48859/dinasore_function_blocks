@@ -9,7 +9,7 @@ Input format from MEASUREMENTS_TO_JSON_TIMESERIES fblock:
 import json
 import pandas as pd
 import numpy as np
-from matplotlib import pyplot
+import matplotlib.pyplot as plt
 
 class PLOT_JSON_TIMESERIES:
 
