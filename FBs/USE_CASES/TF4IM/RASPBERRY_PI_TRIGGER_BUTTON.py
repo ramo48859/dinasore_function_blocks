@@ -30,7 +30,7 @@ class RASPBERRY_PI_TRIGGER_BUTTON:
             while True:
                 value = GPIO.input(pin_number)
                 if bool(value) == True:
-                    return [None, event_value, True]
+                    return [None, event_value, Trodue]
                 elif time.time() > timeout:
                     break
             return [None, event_value, False]

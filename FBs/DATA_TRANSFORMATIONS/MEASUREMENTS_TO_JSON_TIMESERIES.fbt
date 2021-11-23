@@ -17,12 +17,12 @@
             </Event>
         </EventOutputs>
         <InputVars>
-            <VarDeclaration Name="SENSOR_ID" Type="STRING" OpcUa="Constant"/>
-            <VarDeclaration Name="MEASUREMENTS" Type="STRING" OpcUa="Variable"/>
-            <VarDeclaration Name="TIMESTAMPS" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="SENSOR_ID" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="MEASUREMENTS" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="TIMESTAMPS" Type="STRING" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars>
-            <VarDeclaration Name="RESULT" Type="STRING" OpcUa="Constant"/>
+            <VarDeclaration Name="RESULT" Type="STRING" OpcUa="Constant.RUN"/>
         </OutputVars>
     </InterfaceList>
 </FBType>

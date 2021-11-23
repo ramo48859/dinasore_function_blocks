@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
-<FBType Name="FILTER_JSON_TIMESERIES" OpcUa="POINT.ENDPOINT">
+<FBType Name="FILTER_JSON_TIMESERIES" OpcUa="SERVICE">
     <InterfaceList>
         <EventInputs>
             <Event Name="INIT" Type="Event"/>
@@ -17,12 +17,12 @@
             </Event>
         </EventOutputs>
         <InputVars>
-            <VarDeclaration Name="TIMESERIES_1_IN" Type="STRING" OpcUa="Variable"/>
-            <VarDeclaration Name="TIMESERIES_2_IN" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="TIMESERIES_1_IN" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="TIMESERIES_2_IN" Type="STRING" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars>
-            <VarDeclaration Name="TIMESERIES_1_OUT" Type="STRING" OpcUa="Variable"/>
-            <VarDeclaration Name="TIMESERIES_2_OUT" Type="STRING" OpcUa="Variable"/>
+            <VarDeclaration Name="TIMESERIES_1_OUT" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="TIMESERIES_2_OUT" Type="STRING" OpcUa="Variable.RUN"/>
         </OutputVars>
     </InterfaceList>
 </FBType>
