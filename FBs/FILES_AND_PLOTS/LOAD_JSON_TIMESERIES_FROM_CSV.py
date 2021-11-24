@@ -28,6 +28,7 @@ class LOAD_JSON_TIMESERIES_FROM_CSV:
                 self.path = os.path.join(*re.split('\\/', path), name)
                 data = pd.read_csv(self.path, parse_dates=['timestamp'], index_col='timestamp', quotechar='"')
                 data.index = pd.to_datetime(data.index, unit='us')
+                #data = data[0:10]
                 result = data.to_json(orient="split", date_format="iso", date_unit="us")
                 self.status = "Ok"
                 return [None, event_input_value, self.status, result]

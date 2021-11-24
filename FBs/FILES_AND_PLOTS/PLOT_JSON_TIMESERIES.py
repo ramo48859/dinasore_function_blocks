@@ -17,20 +17,30 @@ class PLOT_JSON_TIMESERIES:
         self.state = None
         
     def schedule(self, event_name, event_value,
-                 first_json_timeseries, second_json_timeseries):
+                path, name,
+                y_axis_label, title,
+                first_json_timeseries, second_json_timeseries):
 
         if event_name == 'INIT':    
             return [event_value, None]
 
         elif event_name == 'RUN':
+
             #Convert the json timeseries into a pandas dataframe object
             reference_dfa = pd.read_json(first_json_timeseries, orient="split", precise_float=True)
-            process_dfa = pd.read_json(first_json_timeseries, orient="split", precise_float=True)
+            process_dfa = pd.read_json(second_json_timeseries, orient="split", precise_float=True)
+            process_dfa.index = reference_dfa.index
 
-            frames = [reference_dfa, process_dfa, df3]
-            result = pd.concat(frames, keys=["reference", "process"])
-            
-            measurements.plot(subplots=True, legend=False)
-            pyplot.show()
+            plt.plot(reference_dfa['value'], label='Reference Curve', color='green')
+            plt.plot(process_dfa['value'], label='Process Curve', color='steelblue')
+
+            plt.legend(title='Group')
+
+            #add axes labels and a title
+            plt.ylabel(y_axis_label, fontsize=14)
+            plt.xlabel('timestamp', fontsize=14)
+            plt.title(title, fontsize=16)
+            plt.savefig('{0}\\{1}.png'.format(path,name), dpi="figure")
+            plt.show()
 
             return [None, event_value]

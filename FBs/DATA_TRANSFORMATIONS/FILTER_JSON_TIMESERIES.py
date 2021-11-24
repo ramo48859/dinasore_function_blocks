@@ -26,8 +26,8 @@ class FILTER_JSON_TIMESERIES:
             dataframe1 = pd.read_json(TIMESERIES_1_IN,orient="split")
             dataframe2 = pd.read_json(TIMESERIES_2_IN,orient="split")
 
-            dataframe1_filtered = dataframe1[dataframe1.measurement != 0]
-            dataframe2_filtered = dataframe2[dataframe2.measurement != 0]
+            dataframe1_filtered = dataframe1[dataframe1.value != 0]
+            dataframe2_filtered = dataframe2[dataframe2.value != 0]
 
             size1 = len(dataframe1_filtered.index)
             size2 = len(dataframe2_filtered.index)

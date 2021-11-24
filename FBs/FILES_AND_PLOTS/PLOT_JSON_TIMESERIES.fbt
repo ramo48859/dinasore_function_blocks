@@ -3,7 +3,12 @@
 <FBType Name="PLOT_JSON_TIMESERIES" OpcUa="SERVICE">
     <InterfaceList>
         <EventInputs>
-            <Event Name="INIT" Type="Event"/>
+            <Event Name="INIT" Type="Event">
+                <With Var="PATH"/>
+                <With Var="NAME"/>
+                <With Var="Y_AXIS_LABEL"/>
+                <With Var="TITLE"/>
+            </Event>
             <Event Name="RUN" Type="Event">
                 <With Var="FIRST_TIMESERIES"/>
                 <With Var="SECOND_TIMESERIES"/>
@@ -14,6 +19,10 @@
             <Event Name="RUN_O" Type="Event"/>
         </EventOutputs>
         <InputVars>
+            <VarDeclaration Name="PATH" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="NAME" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="Y_AXIS_LABEL" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="TITLE" Type="STRING" OpcUa="Constant.RUN"/>
             <VarDeclaration Name="FIRST_TIMESERIES" Type="STRING" OpcUa="Variable.RUN"/>
             <VarDeclaration Name="SECOND_TIMESERIES" Type="STRING" OpcUa="Variable.RUN"/>
         </InputVars>
