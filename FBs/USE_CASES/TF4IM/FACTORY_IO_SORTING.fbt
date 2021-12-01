@@ -6,6 +6,9 @@
             <Event Name="INIT" Type="Event">
                 <With Var="HOST"/>
                 <With Var="PORT"/>
+                <With Var="FIRST_GROUP"/>
+                <With Var="SECOND_GROUP"/>
+                <With Var="THIRD_GROUP"/>
             </Event>
             <Event Name="READ" Type="Event">
                 <With Var="DISCARD_FINISHED"/>
@@ -20,6 +23,9 @@
         <InputVars>
             <VarDeclaration Name="HOST" Type="STRING" OpcUa="Constant.RUN"/>
             <VarDeclaration Name="PORT" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="FIRST_GROUP" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="SECOND_GROUP" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="THIRD_GROUP" Type="STRING" OpcUa="Constant.RUN"/>
             <VarDeclaration Name="DISCARD_FINISHED" Type="BOOL" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars>

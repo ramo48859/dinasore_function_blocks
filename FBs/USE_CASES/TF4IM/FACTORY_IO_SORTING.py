@@ -1,5 +1,6 @@
 import time
 import queue
+import numpy as np
 from pyModbusTCP.client import ModbusClient
 
 #===================================================================================
@@ -89,6 +90,14 @@ class FACTORY_IO_SORTING:
         self.diverter = None
         self.fsm_states = {}
         self.item_color_queue = queue.Queue()
+        self.first_group = None
+        self.second_group = None
+        self.third_group = None
+
+    def simulation_running(self):
+        client = ModbusClient(self.host, self.port, auto_open=True, auto_close=True)
+        return client.read_discrete_inputs(5)[0]
+
 
     def state_1(self, event_value, discard_finished):
         # While the vision sensor does not detect a part, roll the entry conveyor
@@ -118,7 +127,9 @@ class FACTORY_IO_SORTING:
         self.entry_conveyor.start()
         self.vision_value = self.item_color_queue.get()
         # Parts to discard
-        if self.vision_value != 1 and self.vision_value != 4 and self.vision_value != 7:
+        if (self.vision_value not in self.first_group and 
+            self.vision_value not in self.second_group and 
+            self.vision_value not in self.third_group):
             self.entry_conveyor.stop()
             #print("Robot discard material.")
             self.discard = True
@@ -131,13 +142,13 @@ class FACTORY_IO_SORTING:
             self.exit_conveyor.start()
             self.diverter = None
             # Blue part to be sorted
-            if self.vision_value == 1:
+            if self.vision_value in self.first_group:
                 self.diverter = self.blue_sorter
             # Green part to be sorted
-            elif self.vision_value == 4:
+            elif self.vision_value in self.second_group:
                 self.diverter = self.green_sorter
             # Grey part to be sorted
-            elif self.vision_value == 7:
+            elif self.vision_value in self.third_group:
                 self.diverter = self.grey_sorter
             self.vision_value = 0
             # Update state
@@ -274,11 +285,18 @@ class FACTORY_IO_SORTING:
             return [None, event_value, False]
         
     def schedule(self, event_name, event_value,
-        host, port, discard_finished):
+        host, port, 
+        first_group, second_group, third_group,
+        discard_finished):
         if event_name == 'INIT':
             # Store modbus host and port
             self.host = host
             self.port = port
+
+            # Convert group of items into list of items
+            self.first_group = np.fromstring(first_group, dtype=int, sep=',')
+            self.second_group = np.fromstring(second_group, dtype=int, sep=',')
+            self.third_group = np.fromstring(third_group, dtype=int, sep=',')
 
             # Instantiate all simulation objects
             # Coil and register IDs are hard coded for now.
@@ -320,11 +338,11 @@ class FACTORY_IO_SORTING:
 
             # Variable to store the return parameters
             return_value = [None, event_value, False]
-
-            # Execute current state actions
-            return_value = self.fsm_states[self.state](event_value, discard_finished)
-
-            #print("Current state: ", self.state)
-            #print("Current return value: ", return_value)
-
+            if(self.simulation_running):
+                # Execute current state actions
+                return_value = self.fsm_states[self.state](event_value, discard_finished)
+                #print("Current state: ", self.state)
+                #print("Current return value: ", return_value)
+            else:
+                time.sleep(0.2)
             return return_value
