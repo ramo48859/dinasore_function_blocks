@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="FACTORY_IO_SORTING" OpcUa="DEVICE.SENSOR">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="HOST"/>
+                <With Var="PORT"/>
+            </Event>
+            <Event Name="READ" Type="Event">
+                <With Var="DISCARD_FINISHED"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="READ_O" Type="Event">
+                <With Var="DISCARD"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="HOST" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="PORT" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="DISCARD_FINISHED" Type="BOOL" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="DISCARD" Type="BOOL" OpcUa="Variable.RUN"/>
+        </OutputVars>
+    </InterfaceList>
+</FBType>
