@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="HTTP_ENDPOINT_SERVER" OpcUa="POINT.STARTPOINT">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="host"/>
+                <With Var="port"/>
+                <With Var="endpoint"/>
+            </Event>
+            <Event Name="READ" Type="Event" OpcUa="Method">
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="READ_O" Type="Event">
+                <With Var="json_content"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="host" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="port" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="endpoint" Type="STRING" OpcUa="Constant.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="json_content" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
+    </InterfaceList>
+</FBType>

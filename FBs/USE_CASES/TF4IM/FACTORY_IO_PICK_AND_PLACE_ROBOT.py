@@ -114,14 +114,14 @@ class FACTORY_IO_PICK_AND_PLACE_ROBOT:
             # is triggered. If discard is True, the  robot will discard the part.
             if discard == True and self.finished:
                 self.finished = False
-                #print("Robot waiting: ", self.finished)
+                print("Robot waiting: ", self.finished)
             elif discard == True and self.finished == False:
                 self.finished = self.robot.discard()
-                #print("Wait for robot: ", self.finished)
+                print("Wait for robot: ", self.finished)
             elif discard == False and self.finished == False:
                 pass
-                #print("Wait for robot: ", self.finished)
+                print("Wait for robot: ", self.finished)
             else:
                 self.finished = True
-                #print("Robot done: ", self.finished)
+                print("Robot done: ", self.finished)
             return [None, event_value, self.finished]

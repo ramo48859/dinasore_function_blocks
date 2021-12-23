@@ -170,7 +170,7 @@ class FACTORY_IO_SORTING:
         #print("Discard is: ", discard_finished)
         self.vision_value = self.vision_sensor.value()
         if(self.vision_value > 0):
-            self.item_color_queueput(self.vision_value)
+            self.item_color_queue.put(self.vision_value)
         # While the robot is not finished, loop
         while not discard_finished:
             time.sleep(0.2)
@@ -341,7 +341,7 @@ class FACTORY_IO_SORTING:
             if(self.simulation_running):
                 # Execute current state actions
                 return_value = self.fsm_states[self.state](event_value, discard_finished)
-                #print("Current state: ", self.state)
+                print("Current state: ", self.state)
                 #print("Current return value: ", return_value)
             else:
                 time.sleep(0.2)
