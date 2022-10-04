@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="SREAMING_PLOT_4_TIMESERIES" OpcUa="SERVICE">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="WINDOW"/>
+                <With Var="SERIE_1_UNITS"/>
+                <With Var="SERIE_2_UNITS"/>
+                <With Var="SERIE_3_UNITS"/>
+                <With Var="SERIE_4_UNITS"/>
+            </Event>
+            <Event Name="RUN" Type="Event">
+                <With Var="SAMPLE_1"/>
+                <With Var="SAMPLE_2"/>
+                <With Var="SAMPLE_3"/>
+                <With Var="SAMPLE_4"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event"/>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="WINDOW" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="SERIE_1_UNITS" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="SERIE_2_UNITS" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="SERIE_3_UNITS" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="SERIE_4_UNITS" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="SAMPLE_1" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="SAMPLE_2" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="SAMPLE_3" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="SAMPLE_4" Type="REAL" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars/>
+    </InterfaceList>
+</FBType>
