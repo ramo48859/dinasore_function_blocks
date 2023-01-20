@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="THRESHOLD" OpcUa="DEVICE.SENSOR">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+            </Event>
+            <Event Name="READ" Type="Event">
+                <With Var="INPUT"/>
+                <With Var="LIMIT"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="READ_O" Type="Event">
+                <With Var="RESULT"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="INPUT" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="LIMIT" Type="INT" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="RESULT" Type="INT" OpcUa="Variable.RUN"/>
+        </OutputVars>
+    </InterfaceList>
+</FBType>
