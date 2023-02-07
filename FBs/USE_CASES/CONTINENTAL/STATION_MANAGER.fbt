@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="STATION_MANAGER" OpcUa="SERVICE">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="STATION_ID"/>
+                <With Var="START_STATION_BIT"/>
+            </Event>
+            <Event Name="RUN" Type="Event">
+                <With Var="START_STATION_BIT"/>
+            </Event>
+            <Event Name="START_STATION" Type="Event">
+                <With Var="START_STATION_BIT"/>
+                <With Var="PART_ID"/>
+            </Event>
+            <Event Name="END_STATION_OK" Type="Event">
+                <With Var="END_STATION_OK_BIT"/>
+            </Event>
+            <Event Name="END_STATION_NOK" Type="Event">
+                <With Var="END_STATION_NOK_BIT"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+            </Event>
+            
+            <Event Name="START_NEXT_STATION" Type="Event">
+                <With Var="PART_ID_O"/>
+                <With Var="START_NEXT_STATION_BIT"/>
+            </Event>
+
+            <Event Name="SET_STATION_OUT" Type="Event">
+                <With Var="STATION_OUT_BIT"/>
+                <With Var="PART_ID_O"/>
+            </Event>
+            <Event Name="DATABASE_INSERTION" Type="Event">
+                <With Var="DATABASE_INSERTION_STRING"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="START_STATION_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="STATION_ID" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="PART_ID" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_OK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_NOK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="PART_ID_O" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="START_NEXT_STATION_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="STATION_OUT_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="DATABASE_INSERTION_STRING" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
+        
+    </InterfaceList>
+</FBType>

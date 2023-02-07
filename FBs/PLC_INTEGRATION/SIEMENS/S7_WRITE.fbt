@@ -27,8 +27,8 @@
             <VarDeclaration Name="PORT" Type="INT" OpcUa="Constant.RUN"/>
             <VarDeclaration Name="DB_NUMBER" Type="INT" OpcUa="Variable.RUN"/>
             <VarDeclaration Name="START" Type="INT" OpcUa="Variable.RUN"/>
-            <VarDeclaration Name="SIZE" Type="INT" OpcUa="Variable.RUN"/>
-            <VarDeclaration Name="DATA" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="DATA" Type="BOOL" OpcUa="Variable.RUN"/>
         </InputVars>
         <OutputVars/>
     </InterfaceList>

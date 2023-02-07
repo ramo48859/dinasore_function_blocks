@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="LINE_MANAGER" OpcUa="SERVICE">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="START_STATION_1_BIT"/>
+            </Event>
+            <Event Name="RUN" Type="Event">
+                <With Var="START_STATION_1_BIT"/>
+            </Event>
+            <Event Name="START_STATION_1" Type="Event">
+                <With Var="START_STATION_1_BIT"/>
+            </Event>
+            <Event Name="END_STATION_1_OK" Type="Event">
+                <With Var="END_STATION_1_OK_BIT"/>
+            </Event>
+            <Event Name="END_STATION_1_NOK" Type="Event">
+                <With Var="END_STATION_1_NOK_BIT"/>
+            </Event>
+            <Event Name="END_STATION_2_OK" Type="Event">
+                <With Var="END_STATION_2_OK_BIT"/>
+            </Event>
+            <Event Name="END_STATION_2_NOK" Type="Event">
+                <With Var="END_STATION_2_NOK_BIT"/>
+            </Event>
+            <Event Name="END_STATION_3_OK" Type="Event">
+                <With Var="END_STATION_3_OK_BIT"/>
+            </Event>
+            <Event Name="END_STATION_3_NOK" Type="Event">
+                <With Var="END_STATION_3_NOK_BIT"/>
+            </Event>
+
+
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+                <With Var="DATA"/>
+            </Event>
+            <Event Name="SET_BEGGINING_ON" Type="Event">
+                <With Var="BEGGINING_STATE"/>
+            </Event>
+            <Event Name="SET_STATION_1_OUT" Type="Event">
+                <With Var="STATION_1_OUT_BIT"/>
+            </Event>
+            <Event Name="SET_STATION_2_OUT" Type="Event">
+                <With Var="STATION_2_OUT_BIT"/>
+            </Event>
+            <Event Name="SET_STATION_3_OUT" Type="Event">
+                <With Var="STATION_3_OUT_BIT"/>
+            </Event>
+            <Event Name="DATABASE_INSERTION" Type="Event">
+                <With Var="DATABASE_INSERTION_STRING"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="START_STATION_1_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_1_OK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_1_NOK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_2_OK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_2_NOK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_3_OK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="END_STATION_3_NOK_BIT" Type="BOOL" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="DATA" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BEGGINING_STATE" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="STATION_1_OUT_BIT" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="STATION_2_OUT_BIT" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="STATION_3_OUT_BIT" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="DATABASE_INSERTION_STRING" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
+        
+    </InterfaceList>
+</FBType>

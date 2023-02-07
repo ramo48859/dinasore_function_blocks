@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="S7_READ_CONTINUOUS_BYTE" OpcUa="DEVICE.SENSOR">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="IP_ADDRESS"/>
+                <With Var="RACK"/>
+                <With Var="NUMBER"/>
+                <With Var="PORT"/>
+            </Event>
+            <Event Name="READ" Type="Event">
+                <With Var="DB_NUMBER"/>
+                <With Var="START"/>
+                <With Var="BIT"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="READ_O" Type="Event">
+                <With Var="DATA"/>
+            </Event>
+            <Event Name="BIT0_O" Type="Event">
+                <With Var="BIT0"/>
+            </Event>
+            <Event Name="BIT1_O" Type="Event">
+                <With Var="BIT1"/>
+            </Event>
+            <Event Name="BIT2_O" Type="Event">
+                <With Var="BIT2"/>
+            </Event>
+            <Event Name="BIT3_O" Type="Event">
+                <With Var="BIT3"/>
+            </Event>
+            <Event Name="BIT4_O" Type="Event">
+                <With Var="BIT4"/>
+            </Event>
+            <Event Name="BIT5_O" Type="Event">
+                <With Var="BIT5"/>
+            </Event>
+            <Event Name="BIT6_O" Type="Event">
+                <With Var="BIT6"/>
+            </Event>
+            <Event Name="BIT7_O" Type="Event">
+                <With Var="BIT7"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="IP_ADDRESS" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="RACK" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="NUMBER" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="PORT" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="DB_NUMBER" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="START" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="BIT" Type="INT" OpcUa="Constant.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="DATA" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT0" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT1" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT2" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT3" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT4" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT5" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT6" Type="BOOL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="BIT7" Type="BOOL" OpcUa="Variable.RUN"/>
+        </OutputVars>
+        
+    </InterfaceList>
+</FBType>

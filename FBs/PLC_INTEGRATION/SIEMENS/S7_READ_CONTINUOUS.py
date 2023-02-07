@@ -18,7 +18,12 @@ class S7_READ_CONTINUOUS:
 
         elif event_name == 'READ':
             #db_read(db_number: int, start: int, size: int)
+            
             data = self.client.db_read(db_number,start,1)
             #print(data)
             int_val = ((int.from_bytes(data, "big") & (1<<bit))>>bit)
             return [None, event_value, int_val]
+    
+
+    def __del__(self):
+        self.client.__del__()
