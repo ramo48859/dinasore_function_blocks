@@ -69,9 +69,11 @@ class StreamingPlotter:
 
         self.canvas.draw()
         # Call itseld
-        window.after(500,self.animate_temp, sample1, sample2, sample3, sample4)        
+        window.after(500, self.animate_temp, sample1, sample2, sample3, sample4)        
 
     def start(self, sample1, sample2, sample3, sample4):
+        #Create a window
+        self.window=Tk("Streamming Plot FB")
         # Store the shared variables
         self.sample1 = sample1
         self.sample2 = sample2
@@ -82,7 +84,7 @@ class StreamingPlotter:
         self.canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
         self.canvas.draw()
         self.animate_temp(self.sample1, self.sample2, self.sample3, self.sample4)
-        window.mainloop()
+        self.window.mainloop()
 
 def start_plot_process(sampling_window, 
     units1, units2, units3, units4, 
