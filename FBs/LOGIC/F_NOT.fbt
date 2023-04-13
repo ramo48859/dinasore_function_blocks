@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="F_NOT"  OpcUa="Service">
+  <InterfaceList>
+    <EventInputs>
+      <Event  Name="EI" Type="Event">
+        <With Var="IN"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="EO" Type="Event">
+        <With Var="OUT"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="IN" Type="ANY_BIT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Name="OUT" Type="ANY_BIT"/>
+    </OutputVars>
+  </InterfaceList>
+</FBType>

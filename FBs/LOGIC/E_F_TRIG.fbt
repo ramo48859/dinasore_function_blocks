@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="E_F_TRIG" OpcUa="Service">
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="EI" Type="Event">
+        <With Var="QI"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="EO" Type="Event"/>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Name="QI" Type="BOOL" OpcUa="Variable.RUN"/>
+    </InputVars>
+    <OutputVars/>
+  </InterfaceList>
+</FBType>
