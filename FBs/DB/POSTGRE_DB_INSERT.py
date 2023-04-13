@@ -15,7 +15,7 @@ reference_id (integer auto-increment pk) | sensor_id (integer) | actuator_id (in
 1 - Example to insert without specifying the column names, no returning values.
 This example will auto increment reference_id column.
 
-Querry:
+Query:
 INSERT INTO reference_values VALUES (1,1,3)
 Block variables:
 table_name = 'reference_values'
@@ -25,7 +25,7 @@ insert_values = '1,1,3'
 2 - Example to insert specifying the column names, no returning values:
 This example will auto increment reference_id column.
 
-Querry:
+Query:
 INSERT INTO reference_values (sensor_id,actuator_id) VALUES (1,3)
 Block variables:
 table_name = 'reference_values (sensor_id,actuator_id)'
@@ -34,7 +34,7 @@ insert_values = '1,1,3'
 3 - Example to insert specifying the column names, with returning values:
 This example will auto increment reference_id column.
 
-Querry:
+Query:
 INSERT INTO reference_values (sensor_id,actuator_id) VALUES (1,3) RETURNING reference_values.id AS reference_id
 Block variables:
 table_name = 'reference_values (sensor_id,actuator_id)'
