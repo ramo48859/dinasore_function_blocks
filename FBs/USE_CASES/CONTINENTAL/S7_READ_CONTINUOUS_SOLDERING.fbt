@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="S7_READ_CONTINUOUS_SOLDERING" OpcUa="DEVICE.SENSOR">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event">
+                <With Var="IP_ADDRESS"/>
+                <With Var="RACK"/>
+                <With Var="NUMBER"/>
+                <With Var="PORT"/>
+                <With Var="STATION_ID"/>
+                <With Var="PART_ID"/>
+                <With Var="LEFT_BLOCK"/>
+                <With Var="RIGHT_BLOCK"/>
+            </Event>
+            <Event Name="READ" Type="Event">
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="READ_O" Type="Event">
+            </Event>
+            <Event Name="DB_INSERTION" Type="Event">
+                <With Var="DB_STRING"/>
+            </Event>
+
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="IP_ADDRESS" Type="STRING" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="RACK" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="NUMBER" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="PORT" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="STATION_ID" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="PART_ID" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="LEFT_BLOCK" Type="INT" OpcUa="Constant.RUN"/>
+            <VarDeclaration Name="RIGHT_BLOCK" Type="INT" OpcUa="Constant.RUN"/>
+
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="DB_STRING" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
+        
+    </InterfaceList>
+</FBType>
