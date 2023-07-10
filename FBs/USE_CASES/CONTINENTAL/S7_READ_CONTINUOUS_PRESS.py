@@ -25,11 +25,14 @@ class S7_READ_CONTINUOUS_PRESS:
                 status = self.client.get_connected()
             except:
                 status = False
+
+            self.station_id = station_id
             if(status == True):
                 print('Connection sucessfully initiated with device at {0}'.format(ip_address))
             else:
                 print('Error initiating connection with S7 PLC')
             self.state = 0
+            
             return [event_value, None, None, None]
 
         elif event_name == 'READ':            
