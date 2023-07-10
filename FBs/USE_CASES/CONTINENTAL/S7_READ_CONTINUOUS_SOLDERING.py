@@ -17,8 +17,11 @@ class S7_READ_CONTINUOUS_SOLDERING:
     def schedule(self, event_name, event_value, ip_address, rack, number, port, station_id, part_id, left_block, right_block):
         
         if event_name == 'INIT':
-            self.client.connect(ip_address,rack,number,port)
-            status = self.client.get_connected()
+            try:
+                self.client.connect(ip_address,rack,number,port)
+                status = self.client.get_connected()
+            except:
+                status = False
             if(status == True):
                 print('Connection sucessfully initiated with device at {0}'.format(ip_address))
             else:
@@ -26,8 +29,10 @@ class S7_READ_CONTINUOUS_SOLDERING:
             return [event_value, None, None, None]
 
         elif event_name == 'READ':            
-            
-            counter = self.client.db_read(16,0,4)
+            try:
+                counter = self.client.db_read(16,0,4)
+            except:
+                return [None, event_value, None,None] 
             counter_value =  int.from_bytes(counter, "big")
             right_state = int.from_bytes(self.client.db_read(8,right_block,2),"big")
             time_in = ""
@@ -45,7 +50,7 @@ class S7_READ_CONTINUOUS_SOLDERING:
                 else:
                     database_string =  str(station_id)  + ',' + str(part_id) + ',\'' +time_in+ '\',\'' +  time_out + '\',False'
                 self.right_state_previous = right_state
-                print(database_string)
+                #print(database_string)
                 return [None, event_value, event_value, database_string]
 
             left_state = int.from_bytes(self.client.db_read(8,left_block,2),"big")
@@ -61,7 +66,7 @@ class S7_READ_CONTINUOUS_SOLDERING:
 
                 self.left_state_previous =left_state
 
-                print(database_string)
+                #print(database_string)
                 return [None, event_value, event_value, database_string]
             self.right_state_previous = right_state
             self.left_state_previous =left_state

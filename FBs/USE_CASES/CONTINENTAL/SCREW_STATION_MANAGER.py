@@ -52,8 +52,8 @@ class SCREW_STATION_MANAGER:
         elif event_name == 'SIGNAL_SCREW_OK' and SIGNAL_SCREW_OK_BIT:
 
             self.ok = self.ok +1
-            print(database_string)
-            print(self.part)
+            #print(database_string)
+            #print(self.part)
             
         elif event_name == 'SIGNAL_SCREW_NOK' and SIGNAL_SCREW_NOK_BIT:
             self.nok = self.nok +1
@@ -63,12 +63,12 @@ class SCREW_STATION_MANAGER:
             print(part)
 
         elif event_name == 'END_STATION':
-            print('here')
-            print(self.part)
+            #print('here')
+            #print(self.part)
             if(self.part != None):
                 self.part['time_out'] = datetime.now()
-                print(self.ok)
-                print(self.number_of_screws)
+                #print(self.ok)
+                #print(self.number_of_screws)
                 if(self.ok >= self.number_of_screws):
                     database_string = str(self.station_id)  + ',' + str(self.part['part_id']) + ',\'' + datetime.strftime(self.part['time_in'],'%Y-%m-%d %H:%M:%S.%f') + '\',\'' + datetime.strftime(self.part['time_out'],'%Y-%m-%dT%H:%M:%S.%f') + '\',True'
                 else:
@@ -76,7 +76,7 @@ class SCREW_STATION_MANAGER:
 
                 DATABASE_INSERTION_EVENT = 1 
 
-            print(database_string)
+            #print(database_string)
         return [INIT_O_EVENT, RUN_O_EVENT , START_NEXT_STATION_EVENT, SET_STATION_OUT_EVENT, DATABASE_INSERTION_EVENT,  part_id, start_next_station_bit, station_out_bit, database_string]
 
 

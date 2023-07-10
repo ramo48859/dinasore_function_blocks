@@ -20,8 +20,11 @@ class S7_READ_CONTINUOUS_PRESS:
     def schedule(self, event_name, event_value, ip_address, rack, number, port, station_id, part_id):
         
         if event_name == 'INIT':
-            self.client.connect(ip_address,rack,number,port)
-            status = self.client.get_connected()
+            try:
+                self.client.connect(ip_address,rack,number,port)
+                status = self.client.get_connected()
+            except:
+                status = False
             if(status == True):
                 print('Connection sucessfully initiated with device at {0}'.format(ip_address))
             else:
@@ -33,14 +36,17 @@ class S7_READ_CONTINUOUS_PRESS:
             
             #input = self.client.read_area(types.Areas.PA,0,8,1)
             #input_value = int.from_bytes(input,"big")
-            output = self.client.read_area(types.Areas.PA,0,8,1)
+            try:
+                output = self.client.read_area(types.Areas.PA,0,8,1)
+            except:
+                return [None, event_value, None,None]
             output_value = int.from_bytes(output,"big")
 
             #0x15 -> Any of the green lights is on
             if(self.state == 0 and output_value & 0x15 != 0):
                 self.state=1
                 self.time_in = datetime.strftime(datetime.now(),'%Y-%m-%d %H:%M:%S.%f')
-                print(state, hex(output_value))
+                #print(state, hex(output_value))
 
 
             elif(self.state == 1 and ((self.output_previous & 0xc0)!=0 and (output_value & 0xb0) == 0) ):
