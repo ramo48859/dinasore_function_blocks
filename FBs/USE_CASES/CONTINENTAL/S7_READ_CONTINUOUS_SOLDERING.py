@@ -32,6 +32,8 @@ class S7_READ_CONTINUOUS_SOLDERING:
             try:
                 counter = self.client.db_read(16,0,4)
             except:
+                self.client.connect(ip_address,rack,number,port)
+
                 return [None, event_value, None,None] 
             counter_value =  int.from_bytes(counter, "big")
             right_state = int.from_bytes(self.client.db_read(8,right_block,2),"big")

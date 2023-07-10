@@ -5,6 +5,7 @@ import socket
 class EOL_LISTENER:    
     def __init__(self):
         self.socket = None
+        self.in_timestamp = None
 
     def schedule(self, event_name, event_value, ip_address,port, station_id, part_id):
         
@@ -20,7 +21,15 @@ class EOL_LISTENER:
                 data = conn.recv(1024)
                 if data:
                     print(data)
-                    return [None, event_value,True, data]
+                    data_split = data.split(";")
+                    if len(data)>1 :
+                        self.in_timestamp = data_split[1]
+                        return [None, event_value, None, None]
+                    else:
+                        result = data_split[1]
+                        out_time_stamp = data_split[2]
+                        database_string = station_id  + ',' + part_id + ',\'' +  self.in_timestamp  + '\',\'' + out_time_stamp + '\',' + result
+                        return [None, event_value,True, database_string]
 
             return [None, event_value, None,None] 
             
