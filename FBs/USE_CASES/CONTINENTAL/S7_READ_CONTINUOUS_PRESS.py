@@ -49,17 +49,17 @@ class S7_READ_CONTINUOUS_PRESS:
             if(self.state == 0 and output_value & 0x15 != 0):
                 self.state=1
                 self.time_in = datetime.strftime(datetime.now(),'%Y-%m-%d %H:%M:%S.%f')
-                #print(state, hex(output_value))
+                #print(self.state, hex(output_value))
 
 
             elif(self.state == 1 and ((self.output_previous & 0xc0)!=0 and (output_value & 0xb0) == 0) ):
                 self.state =0
                 time_out = datetime.strftime(datetime.now(),'%Y-%m-%d %H:%M:%S.%f')
                 if(output_value & 0x40):
-                    database_string = str(self.station_id)  + ',' + str(self.part_id) + ',\'' +self.time_in+ '\',\'' +  time_out + '\',True'
+                    database_string = str(station_id)  + ',' + str(part_id) + ',\'' +self.time_in+ '\',\'' +  time_out + '\',True'
 
                 else:
-                    database_string = str(self.station_id)  + ',' + str(self.part_id) + ',\'' +self.time_in+ '\',\'' +  time_out + '\',False'
+                    database_string = str(station_id)  + ',' + str(part_id) + ',\'' +self.time_in+ '\',\'' +  time_out + '\',False'
                 
                 return [None, event_value,event_value,database_string]
             
