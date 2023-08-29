@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="REPORT_IF_GREATER" OpcUa="SERVICE">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event"/>
+            <Event Name="RUN" Type="Event" OpcUa="Method">
+                <With Var="Value"/>
+                <With Var="Limit"/>
+                <With Var="Critical"/>
+                <With Var="Type"/>
+                <With Var="Message"/>
+                <With Var="Host"/>
+                <With Var="Port"/>
+                <With Var="serialNumber"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+                <With Var="ValueOut"/>
+                <With Var="Report"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="Value" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Limit" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Critical" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Type" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Message" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Host" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Port" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="serialNumber" Type="INT" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="ValueOut" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Report" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
+    </InterfaceList>
+</FBType>

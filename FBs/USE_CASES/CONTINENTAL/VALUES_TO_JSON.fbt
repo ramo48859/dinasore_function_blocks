@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="VALUES_TO_JSON" OpcUa="SERVICE">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event"/>
+            <Event Name="RUN" Type="Event" OpcUa="Method">
+                <With Var="Value1"/>
+                <With Var="Value2"/>
+                <With Var="Value3"/>
+                <With Var="Value4"/>
+                <With Var="Value5"/>
+                <With Var="Value6"/>
+                <With Var="Value7"/>
+                <With Var="Value8"/>
+                <With Var="Value9"/>
+                <With Var="Value10"/>
+                <With Var="Time"/>
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+                <With Var="Data"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="Value1" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value2" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value3" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value4" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value5" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value6" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value7" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value8" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value9" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Value10" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="Time" Type="INT" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="Data" Type="STRING" OpcUa="Variable.RUN"/>
+        </OutputVars>
+    </InterfaceList>
+</FBType>
