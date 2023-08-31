@@ -32,7 +32,7 @@ class MONGO_DB_INSERT:
             load_dotenv()
             user = environ.get('MONGO_USER')
             password = environ.get('PASSWORD')
-            self.client = MongoClient(f'mongodb://{user}:{password}@{host}:{port}')
+            self.client = MongoClient(f'mongodb://{host}:{port}')
             self.database = self.client['diginental']
 
             return [event_input_value, None, []]

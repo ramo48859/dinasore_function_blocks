@@ -11,6 +11,9 @@ def createProperty(arguments):
 
 class VALUES_TO_JSON:
 
+    def __init__(self):
+        self.data = {}
+
     def schedule(self, event_input_name, event_input_value, value1, value2, value3, value4, value5, value6, value7,
                  value8, value9, value10, time):
 
@@ -25,7 +28,6 @@ class VALUES_TO_JSON:
         elif event_input_name == 'RUN':
 
             dateTime = datetime.now()
-
             timeStamp = datetime.timestamp(dateTime)
             values = [value1, value2, value3, value4, value5, value6, value7, value8, value9, value10]
 

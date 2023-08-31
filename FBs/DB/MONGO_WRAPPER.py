@@ -12,14 +12,18 @@ class MONGO_WRAPPER:
             load_dotenv()
             user = environ.get('MONGO_USER')
             password = environ.get('PASSWORD')
-            client = MongoClient(f'mongodb://{user}:{password}@{host}:{port}')
+            client = MongoClient(f'mongodb://{host}:{port}')
             self.db = client.diginental
             return [event_input_value, None, []]
 
         elif event_input_name == 'RUN':
+            if(values==None):
+                return [None, None, None]
             values = values.split(',')
+            if(len(values)==0):
+                return [None, None, None]
             timestamp_start = datetime.strptime(values[2].replace('\'', '').split('.')[0], "%Y-%m-%d %H:%M:%S").timestamp()
-            timestamp_finish = datetime.strptime(values[3].replace('\'', '').split('.')[0], "%Y-%m-%dT%H:%M:%S").timestamp()
+            timestamp_finish = datetime.strptime(values[3].replace('\'', '').split('.')[0], "%Y-%m-%d %H:%M:%S").timestamp()
             value = {'serialNumber': values[0], 'type': "time", 'value': timestamp_finish - timestamp_start}
 
             # Increment machine counter
