@@ -51,3 +51,9 @@ class MONGO_WRAPPER:
                 )
 
             return [None, event_input_value, str(value).replace("\'", "\"")]
+
+    def __del__(self):
+        if(self.client != None):
+            self.client.close()
+            self.client = None
+

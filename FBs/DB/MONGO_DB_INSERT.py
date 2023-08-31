@@ -71,3 +71,7 @@ class MONGO_DB_INSERT:
                 print(f"Wrote: {len(toDB[key])} values to the collection: {collName}")
 
             return [None, event_input_value, "OK"]
+    def __del__(self):
+        if(self.client != None):
+            self.client.close()
+            self.client = None
