@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Name="MONGO_DB_CT" OpcUa="SERVICE">
+    <InterfaceList>
+        <EventInputs>
+            <Event Name="INIT" Type="Event"/>
+            <Event Name="RUN" Type="Event" OpcUa="Method">
+                <With Var="host"/>
+                <With Var="port"/>
+                <With Var="past_x"/>
+                <With Var="SerialNumbers"/>
+                <With Var="m_criticals"/>                
+            </Event>
+        </EventInputs>
+        <EventOutputs>
+            <Event Name="INIT_O" Type="Event"/>
+            <Event Name="RUN_O" Type="Event">
+                <With Var="data"/>
+                <With Var="critical_1"/>
+                <With Var="critical_2"/>
+                <With Var="critical_3"/>
+                <With Var="critical_4"/>
+                <With Var="critical_5"/>
+                <With Var="critical_6"/>
+                <With Var="critical_7"/>'
+                <With Var="critical_8"/>
+            </Event>
+        </EventOutputs>
+        <InputVars>
+            <VarDeclaration Name="host" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="port" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="past_x" Type="INT" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="SerialNumbers" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="m_criticals" Type="STRING" OpcUa="Variable.RUN"/>
+        </InputVars>
+        <OutputVars>
+            <VarDeclaration Name="data" Type="STRING" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_1" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_2" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_3" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_4" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_5" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_6" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_7" Type="REAL" OpcUa="Variable.RUN"/>
+            <VarDeclaration Name="critical_8" Type="REAL" OpcUa="Variable.RUN"/>
+            
+        </OutputVars>
+    </InterfaceList>
+</FBType>
