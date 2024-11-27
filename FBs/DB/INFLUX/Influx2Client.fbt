@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for a Simple Function Block Type" Name="Influx2Client">
+  <Identification Standard="61499-1"/>
+  <VersionInfo Author="david" Date="2024-08-01" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Initialze Function Block" Name="Init" Type="Event">
+        <With Var="url"/>
+        <With Var="token"/>
+        <With Var="org"/>
+        <With Var="bucket"/>
+      </Event>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Execution Confirmation" Name="INIT_O" Type="Event">
+        <With Var="client"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Input" Name="url" Type="STRING"/>
+      <VarDeclaration Comment="Access token of Database" Name="token" Type="STRING"/>
+      <VarDeclaration Comment="Organisation" Name="org" Type="STRING"/>
+      <VarDeclaration Comment="Data bucket" Name="bucket" Type="STRING"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="Client object" Name="client" Type="STRING"/>
+    </OutputVars>
+  </InterfaceList>
+  <SimpleFB>
+    <Algorithm Comment="Normally executed algorithm" Name="REQ">
+      <ST Text="OUT := IN;&#10;"/>
+    </Algorithm>
+  </SimpleFB>
+</FBType>
