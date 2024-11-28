@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for a simple Basic Function Block Type" Name="ModbusTCPClient">
+  <Identification Description="Modbus TCP Client which connects to a Modbus device. The registers are made available to the applicaton" Function="Modbus TCP Client" Standard="61499-2"/>
+  <VersionInfo Author="david" Date="2024-07-21" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Initialization Request" Name="INIT" Type="Event">
+        <With Var="hostname"/>
+        <With Var="port"/>
+        <With Var="uid"/>
+      </Event>
+      <Event Comment="Normal Execution Request" Name="READ" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Initialization Confirm" Name="INIT_O" Type="Event">
+        <With Var="client"/>
+      </Event>
+      <Event Comment="Execution Confirmation" Name="READ_O" Type="Event">
+        <With Var="client"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Hostname or IP of Modbus Device" Name="hostname" Type="STRING"/>
+      <VarDeclaration Comment="Port of Modbus Device" InitialValue="502" Name="port" Type="INT"/>
+      <VarDeclaration Comment="unit id" InitialValue="71" Name="uid" Type="INT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="client Object" Name="client" Type="STRING"/>
+    </OutputVars>
+  </InterfaceList>
+</FBType>

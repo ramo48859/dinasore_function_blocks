@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for a Simple Function Block Type" Name="Read_FLOAT">
+  <Identification Standard="61499-1"/>
+  <VersionInfo Author="david" Date="2024-07-26" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Comment="Initialization event" Name="INIT" Type="Event">
+        <With Var="client"/>
+        <With Var="address"/>
+      </Event>
+      <Event Comment="Read event" Name="READ" Type="Event"/>
+        <With Var="client"/>
+        <With Var="address"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Comment="Init event out" Name="INIT_O" Type="Event"/>
+      <Event Comment="Read event out" Name="READ_O" Type="Event">
+        <With Var="OUT"/>
+      </Event>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="client object" Name="client" Type="STRING"/>
+      <VarDeclaration Comment="register address" Name="address" Type="UINT"/>
+    </InputVars>
+    <OutputVars>
+      <VarDeclaration Comment="Output" Name="OUT" Type="REAL"/>
+    </OutputVars>
+  </InterfaceList>
+</FBType>
