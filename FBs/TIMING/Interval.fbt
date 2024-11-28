@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE FBType SYSTEM "http://www.holobloc.com/xml/LibraryElement.dtd">
+<FBType Comment="Template for an empty simple function block" Name="Interval" OpcUa="DEVICE.SENSOR">
+  <Identification Standard="61499-1"/>
+  <VersionInfo Author="david" Date="2024-07-26" Version="1.0"/>
+  <InterfaceList>
+    <EventInputs>
+      <Event Name="INIT" Type="Event"/>
+      <Event Name="READ" Type="Event"/>
+    </EventInputs>
+    <EventOutputs>
+      <Event Name="INIT_O" Type="Event"/>
+      <Event Name="READ_O" Type="Event"/>
+    </EventOutputs>
+    <InputVars>
+      <VarDeclaration Comment="Event repetition interval" Name="cycleTime" Type="REAL"/>
+    </InputVars>
+  </InterfaceList>
+</FBType>
