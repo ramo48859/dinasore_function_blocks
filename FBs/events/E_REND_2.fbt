@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FBType Name="E_REND_2" Comment="Rendezvous (AND) of two events" >
+	<Identification Standard="61499-2">
+	</Identification>
+	<VersionInfo Version="1.0" Author="david" Date="2025-01-07">
+	</VersionInfo>
+	<CompilerInfo packageName="dinasore::events">
+	</CompilerInfo>
+	<InterfaceList>
+		<EventInputs>
+			<Event Name="EI1" Type="Event" Comment="first event to wait for" >
+			</Event>
+			<Event Name="EI2" Type="Event" Comment="second event to wait for" >
+			</Event>
+			<Event Name="R" Type="Event" Comment="reset the FB to inital state (i.e., wait again for both events)" >
+			</Event>
+		</EventInputs>
+		<EventOutputs>
+			<Event Name="EO" Type="Event" Comment="triggered when both EI1 and EI2 occured at least once" >
+			</Event>
+		</EventOutputs>
+	</InterfaceList>
+</FBType>
