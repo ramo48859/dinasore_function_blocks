@@ -13,3 +13,7 @@ dependencies = [
 dev = [
     "pytest>=8.3.4",
 ]
+
+[project.entry-points."dinasore.plugins"]
+dinasore-function-blocks = "dinasore-function-blocks"  # Register the entire plugin, not individual function blocks
+
