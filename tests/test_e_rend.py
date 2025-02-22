@@ -1,5 +1,5 @@
 import pytest
-from FBs.events.E_REND_2 import E_REND_2, States
+from dinasore_function_blocks.FBs.events.E_REND_2 import E_REND_2, States
 
 
 @pytest.fixture
