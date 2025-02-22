@@ -3,7 +3,7 @@ name = "dinasore-function-blocks"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10.14"
+requires-python = ">=3.10"
 dependencies = [
     "influxdb-client>=1.48.0",
     "numpy>=2.2.1",
